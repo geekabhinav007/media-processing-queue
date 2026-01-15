@@ -1,4 +1,4 @@
-version: '3.9'
+version: '1.0'
 
 services:
   postgres:
@@ -44,6 +44,22 @@ services:
     volumes:
       - .:/usr/src/app
     command: npm run start:dev
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: media-queue-worker
+    env_file:
+      - .env.example
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/usr/src/app
+    command: npm run start:worker
 
 volumes:
   postgres_data:
