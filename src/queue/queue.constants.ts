@@ -1,0 +1,2 @@
+export const JOB_QUEUE_TOKEN = Symbol('JOB_QUEUE_TOKEN');
+export const REDIS_CONNECTION_TOKEN = Symbol('REDIS_CONNECTION_TOKEN');
