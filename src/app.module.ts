@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { createTypeOrmOptions } from './config/typeorm.config';
 import { HealthModule } from './health/health.module';
+import { JobsModule } from './jobs/jobs.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { HealthModule } from './health/health.module';
       inject: [ConfigService],
     }),
     HealthModule,
+    JobsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
