@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -20,6 +21,20 @@ async function bootstrap() {
       forbidUnknownValues: false,
     }),
   );
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('Media Processing Queue API')
+    .setDescription('Endpoints for submitting, tracking, listing, and cancelling media processing jobs.')
+    .setVersion('1.0.1')
+    .addTag('jobs')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('api/v1/docs', app, document, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  });
 
   await app.listen(port);
 }
