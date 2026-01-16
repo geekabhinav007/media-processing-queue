@@ -1,6 +1,6 @@
 # Media Processing Queue
 
-Backend service for submitting media processing jobs, tracking progress, and retrieving results. Built with NestJS, TypeORM, PostgreSQL, Redis, and BullMQ. Swagger documentation is exposed at http://localhost:3000/api/v1/docs once the API boots.
+Backend service for submitting media processing jobs, tracking progress, and retrieving results. Built with NestJS, TypeORM, PostgreSQL, Redis, and BullMQ. Swagger documentation is exposed at https://media-processing-queue.onrender.com/api/v1/docs once the API boots.
 
 ## Prerequisites
 - Node.js 20+
